@@ -1,0 +1,299 @@
+@font-face {
+    font-family: "OpenSans";
+    src: url(/src/fonts/OpenSansBold.woff2);
+    font-weight: 800;
+}
+@font-face {
+    font-family: "OpenSans";
+    src: url(/src/fonts/OpenSansSemiBold.woff2);
+    font-weight: 500;
+}
+@font-face {
+    font-family: "OpenSans";
+    src: url(/src/fonts/OpenSans-Regular.woff2);
+    font-weight: 400;
+}
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+body{
+    background: rgba(15, 15, 15, 0.85);
+    min-height: 100vh;
+}
+.header-menu{
+    display: flex;
+    align-items: center;
+    padding: 10px 16px 10px 16px;
+    gap: 10px;
+    animation: inputtblock 0.5s forwards;
+    background-color: rgb(10, 10, 10, 0.8);
+}
+.chat-hedaer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+.header-menu button{
+    background: none;
+    border: none;
+}
+.header-menu p{
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: "OpenSans";
+}
+.block-input-body{
+    display: flex;
+    justify-content: center;
+}
+.chat-body {
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: "OpenSans";
+    font-weight: 800;
+    padding-bottom: 50px;
+    gap: 20px;
+    padding-top: 16px;
+}
+#greeting{
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 50px;
+    font-size: 20px;
+    animation: inputtblock 0.5s forwards;
+}
+@media (min-width: 360px) {
+    .chat-body {
+        height: 80vh;
+    }
+}
+@media (min-width: 375px) {
+    .chat-body {
+        height: 77vh;
+    }
+}
+@media (min-width: 390px) {
+    .chat-body {
+        height: 82vh;
+    }
+}
+@media (min-width: 412px) {
+    .chat-body {
+        height: 84vh;
+    }
+}
+@media (min-width: 540px) {
+    .chat-body {
+        height: 80vh;
+    }
+}
+@media (min-width: 768px) {
+    .chat-body {
+        height: 85vh;
+    }
+}
+@media (min-width: 820px) {
+    .chat-body {
+        height: 87vh;
+    }
+}
+@media (min-width: 853px) {
+    .chat-body {
+        height: 88vh;
+    }
+}
+@media (min-width: 912px) {
+    .chat-body {
+        height: 89vh;
+    }
+}
+@media (min-width: 1024px) {
+    .chat-body {
+        height: 90vh;
+    }
+}
+.block-input{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    animation: inputtblock 0.5s forwards;
+}
+#button-user{
+    position: absolute;
+    background: none;
+    border: none;
+    margin-right: 80px;
+    transition: opacity 0.2s ease-in-out;
+}
+#button-micro{
+    background: none;
+    border: none;
+    margin-right: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+#input-user{
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    flex: 1;
+    height: 60px;
+    color: white;
+    font-size: 16px;
+    font-family: "OpenSans";
+    font-weight: 400;
+    text-indent: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-right: 100px;
+}
+@keyframes inputtblock {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.header-menu-top{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: absolute;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+.hidden-top{
+    background-color: rgba(45, 45, 45, 0.900);
+    width: 300px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    transform: translateX(-150%);
+    animation: ani 0.4s forwards;
+    justify-content: center;
+}
+.hidden-top-out{
+    animation: ani-out 0.4s forwards;
+}
+@keyframes ani {
+    0% {transform: translateX(-150%);}
+    100% {transform: translateY(0);}
+}
+@keyframes ani-out {
+    0% {transform: translateY(0);}
+    100% {transform: translateX(-150%);}
+}
+.menu-top{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.menu-top select{
+    height: 40px;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.5);
+    font-family: "OpenSans";
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+.model-gpt{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.model-gpt p{
+    font-family: "OpenSans";
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+}
+#remove_chat{
+    height: 40px;
+    border-radius: 5px;
+    background:#ff00005d;
+    border: none;
+    color: white;
+    font-family: "OpenSans";
+    font-weight: 700;
+    font-size: 14px;
+}
+#button-micro{
+    position: absolute;
+    margin-right: 40px;
+    transition: transform 0.2s ease-in-out
+}
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.message-animation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    animation: fadeIn 0.2s ease-out;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+@keyframes typing {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#typing-dots {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(40, end);
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-out {
+    animation-name: fadeOut;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/cssreset.css">
+</head>
+<body>
+
+    <div class="header-menu-top">
+        <div class="hidden-top">
+            <div class="menu-top">
+                <div class="model-gpt">
+                    <p>Модели:</p>
+                    <select>
+                        <option value="s1">GPT-4</option>
+                        <option value="s2">GPT-4 WEB</option>
+                    </select>
+                </div>                    
+                <button id="remove_chat">Очистить чат</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header-menu">
+        <button id="menu-button"><img src="src/img/menu.png" height="40px" width="40px"></button>
+        <div class="chat-hedaer">
+            <img src="src/img/robot.png" height="40px" width="40px">
+            <div>
+                <p id="model-name" style="font-size: 12px; font-weight: 400;"></p>
+                <p id="online-status" style="font-size: 12px; font-weight: 400;"></p>
+                <p id="typing-indicator" style="display: none; font-size: 12px; font-weight: 400;">Печатает<span id="typing-dots" class="typing-dots"></span></p>
+            </div>
+        </div>
+    </header>
+    <div>
+        <div id="chat-body" class="chat-body">
+            <div id="greeting">
+                <img src="src/img/chatbot.png"> 
+                <p>Чем я могу помочь вам сегодня?</p>
+            </div>
+        </div>
+        <div class="block-input-body">
+            <div class="block-input">
+                <input id="input-user" placeholder="Ваш запрос" type="text">
+                <button id="button-user"><img src="src/img/send-message.png" height="25px" width="25px"></button>
+                <button id="button-micro"><img src="src/img/microphone.png" height="25px" width="25px" ></button>
+            </div>
+        </div>
+    </div>
+<script src="src/js/script.js"></script>
+</body>
+</html>
