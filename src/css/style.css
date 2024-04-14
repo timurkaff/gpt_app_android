@@ -21,7 +21,7 @@
     align-items: center;
 }
 body{
-    background: rgba(15, 15, 15, 0.85);
+    background: #000000;
     min-height: 100vh;
 }
 .header-menu{
@@ -30,7 +30,6 @@ body{
     padding: 10px 16px 10px 16px;
     gap: 10px;
     animation: inputtblock 0.5s forwards;
-    background-color: rgb(10, 10, 10, 0.8);
 }
 .chat-hedaer{
     display: flex;
@@ -133,7 +132,7 @@ body{
     position: absolute;
     background: none;
     border: none;
-    margin-right: 80px;
+    margin-right: 120px;
     transition: opacity 0.2s ease-in-out;
 }
 #button-micro{
@@ -233,7 +232,7 @@ body{
 }
 #button-micro{
     position: absolute;
-    margin-right: 40px;
+    margin-right: 80px;
     transition: transform 0.2s ease-in-out
 }
 .fade-in {
@@ -291,9 +290,13 @@ body{
     from { opacity: 1; }
     to { opacity: 0; }
 }
-
 .fade-out {
     animation-name: fadeOut;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
+#photo{
+    background: none;
+    border: none;
+    margin-right: 20px;
+} 

@@ -1,10 +1,11 @@
+let inputUser;
 let buttonUser;
 document.addEventListener('DOMContentLoaded', function() {
     const savedChatHistory = localStorage.getItem('chatHistory');
     if (savedChatHistory) {
         document.querySelector('.chat-body').innerHTML = savedChatHistory;
     }
-    const inputUser = document.getElementById('input-user');
+    inputUser = document.getElementById('input-user');
     buttonUser = document.getElementById('button-user');
 
     function checkInput() {
@@ -42,9 +43,10 @@ buttonUser.addEventListener('click', async function() {
         const userText = document.createElement('p');
         userText.style.background = "rgb(118, 106, 200)";
         userText.style.padding = "10px";
+        userText.style.maxWidth = "330px"
         userText.style.fontFamily = '"OpenSans"';
         userText.style.fontWeight = '400';
-        userText.style.fontSize = '16px';
+        userText.style.fontSize = '17px';
         userText.style.borderRadius = "10px";
         userText.textContent = inputUser.value;
         textUserDiv.appendChild(userText);
@@ -97,29 +99,7 @@ buttonUser.addEventListener('click', async function() {
                 const trimmedText = text.trim().replace(/^_+/, '');
                 const data = JSON.parse(trimmedText);
                 document.getElementById('typing-indicator').style.display = 'none';
-                if (data.images && data.images.length > 0) {
-
-                    data.images.forEach(image => {
-                        const imgDiv = document.createElement('div');
-                        imgDiv.className = 'message-animation';
-                        const imgElement = document.createElement('img');
-                        imgElement.src = image;
-                        imgElement.style.height = "300px";
-                        imgElement.style.width = "300px";
-                        imgDiv.appendChild(imgElement);
-                    
-                        const downloadButton = document.createElement('button');
-                        downloadButton.style.width = "300px"
-                        downloadButton.textContent = 'Скачать';
-                        downloadButton.onclick = function() {
-                            downloadImage(image);
-                        };
-                        imgDiv.appendChild(downloadButton);
-                        
-                        chatBody.appendChild(imgDiv);
-                        saveChatHistory();
-                    });
-                } else if (data.gpt || data.gpt) {
+                if (data.gpt || data.gpt) {
                     messages.push({
                         role: "assistant",
                         content: data.gpt || data.gpt 
@@ -138,7 +118,8 @@ buttonUser.addEventListener('click', async function() {
                     gptText.style.padding = "10px";
                     gptText.style.fontFamily = '"OpenSans"';
                     gptText.style.fontWeight = '400';
-                    gptText.style.fontSize = '16px';
+                    gptText.style.fontSize = '17px';
+                    gptText.style.maxWidth = '330px';
                     gptText.style.borderRadius = "10px";
                     gptText.textContent = data.gpt || data.gpt;
                     textGptDiv.appendChild(gptText);
@@ -198,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             setTimeout(function() {
                 element.style.display = 'none'; // Скрываем э��емен�� после завершения анимации
-                element.classList.remove('hidden-top-out'); // Удаляем класс после завершения анимации
+                element.classList.remove('hidden-top-out'); // Удаляем класс после завершения ани����ации
             }, 300);
         } else {
             headerMenuTop.style.display = 'flex';
@@ -364,3 +345,44 @@ checkInternetConnection();
 window.addEventListener('online', checkInternetConnection);
 window.addEventListener('offline', checkInternetConnection);
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const photoButton = document.getElementById('photo');
+
+    photoButton.addEventListener('click', function() {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.style.display = 'none';
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                console.log('Выбран файл:', file);
+                const fileURL = URL.createObjectURL(file);
+                Tesseract.recognize(
+                    fileURL,
+                    'rus',
+                    { logger: m => console.log(m) }
+                ).then(({ data: { text } }) => {
+                    inputUser.value = text; // Устанавливаем распознанный текст в inputUser
+                    buttonUser.disabled = false; // Убедимся, что кнопка отправки не отключена
+                    buttonUser.style.opacity = '1'; // Устанавливаем прозрачность кнопки в нормальное состояние
+                    buttonUser.click(); // Имитируем нажатие кнопки отправки
+                    saveChatHistory(); // Сохраняем историю чата
+                    saveChatHistory();
+                })
+                .catch(err => {
+                    console.error('Ошибка при распознавании текста:', err);
+                });
+            }
+        });
+
+        document.body.appendChild(fileInput);
+        fileInput.click();
+
+        fileInput.addEventListener('change', function() {
+            document.body.removeChild(fileInput);
+        });
+    });
+});
